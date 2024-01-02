@@ -43,6 +43,9 @@ steps:
     downloadType: 'single'
     artifactName: 'drop'
     downloadPath: '$(System.DefaultWorkingDirectory)'    
+- task: CmdLine@2
+  inputs:
+    script: 'ls -l /home/vsts/work/1/s/drop/'
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
