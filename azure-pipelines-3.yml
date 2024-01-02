@@ -23,8 +23,8 @@ steps:
     tasks: 'build'
 - task: CopyFiles@2
   inputs:
-    SourceFolder: ''
-    Contents: '**'
+    SourceFolder: '$(Build.SourcesDirectory)/build/libs'
+    Contents: '*.jar'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
@@ -49,4 +49,4 @@ steps:
     azureSubscription: 'Azure subscription 1(4dcde7ac-537f-41cc-88b0-ce4edcc82eb8)'
     appType: 'webApp'
     WebAppName: 'ori-demo'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.jar'
