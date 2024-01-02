@@ -4,13 +4,25 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 steps:
-  - task: PublishPipelineArtifact@1
+  - task: Gradle@3
     inputs:
-      targetPath: '$(Build.ArtifactStagingDirectory)' 
-      artifactName: ori1
-  - task: AzureRmWebAppDeployment@4
+      gradleWrapperFile: 'gradlew'
+      tasks: 'build'
+      publishJUnitResults: true
+      testResultsFiles: '**/TEST-*.xml'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.11'
+      sonarQubeRunAnalysis: false
+      spotBugsAnalysis: false
+  - task: PublishBuildArtifacts@1
     inputs:
-      ConnectionType: 'AzureRM'
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'ori1'
+      publishLocation: 'Container'
+
+  - task: AzureWebApp@1
+    inputs:
       azureSubscription: 'Azure subscription 1(4dcde7ac-537f-41cc-88b0-ce4edcc82eb8)'
-      appType: 'webApp'
-      WebAppName: 'ori-demo'
+      appType: 'webAppLinux'
+      appName: 'ori-demo'
+      package: '$(System.DefaultWorkingDirectory)/**/*.zip'
