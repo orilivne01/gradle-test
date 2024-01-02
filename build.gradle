@@ -21,7 +21,18 @@ configurations {
 repositories {
 	mavenCentral()
 }
-
+azurewebapp {
+    subscription = 'Azure subscription 1'
+    resourceGroup = 'ori1'
+    appName = 'ori-demo'
+    pricingTier = 'P1v2' 
+    region = 'East US' 
+    runtime {
+        os = 'Linux' 
+        webContainer = 'Tomcat 9.0'
+        javaVersion = 'Java 11'
+    }
+}
 dependencies {
 	//implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
