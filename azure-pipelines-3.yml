@@ -36,5 +36,5 @@ steps:
     azureSubscription: 'Azure subscription 1(4dcde7ac-537f-41cc-88b0-ce4edcc82eb8)'
     appType: 'webAppLinux'
     appName: 'ori-demo'
-    package: '$(Build.ArtifactStagingDirectory)/**/*.tar'
+    package: '$(Build.ArtifactStagingDirectory)/*.tar'
 
