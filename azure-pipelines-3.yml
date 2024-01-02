@@ -30,7 +30,7 @@ steps:
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
-    StoreAsTar: true
+    #StoreAsTar: true
 #- task: AzureWebApp@1
 #  inputs:
 #    azureSubscription: 'Azure subscription 1(4dcde7ac-537f-41cc-88b0-ce4edcc82eb8)'
@@ -49,4 +49,4 @@ steps:
     azureSubscription: 'Azure subscription 1(4dcde7ac-537f-41cc-88b0-ce4edcc82eb8)'
     appType: 'webApp'
     WebAppName: 'ori-demo'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.tar'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
